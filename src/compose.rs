@@ -1,11 +1,11 @@
 pub trait Compose: Sized {
-    fn compose<A: Compose>(self, other: A)
+    fn compose<A>(self, other: A)
                            -> (Self, A) {
         (self, other)
     }
 }
 
-impl<A: Compose, B: Compose> Compose for (A, B) {}
+impl<A> Compose for A {}
 
 macro_rules! compose {
 ( $first:expr ) => ( ($first) );

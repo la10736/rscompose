@@ -1,10 +1,4 @@
-use ::Action;
-
-// Utility Function to wrap a concrete impl in a dynamic trait object
-pub fn action<'a, A: Action + 'a >(a: A)
-                                   -> Box<Action + 'a> {
-    Box::new(a)
-}
+use Action;
 
 pub struct ActionComposite {
     actions: Vec<Box<Action>>
@@ -29,6 +23,12 @@ impl Action for Vec<Box<Action>> {
                 a.do_action()
             );
     }
+}
+
+// Utility Function to wrap a concrete impl in a dynamic trait object
+pub fn action<'a, A: Action + 'a >(a: A)
+                                   -> Box<Action + 'a> {
+    Box::new(a)
 }
 
 //More generic implementation. Pay attention: use it prevent any other generic impl

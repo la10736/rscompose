@@ -1,4 +1,4 @@
-use ::Action;
+use Action;
 
 pub struct ActionComposite<A: Action, B: Action> {
     data: (A, B)

@@ -1,3 +1,5 @@
+extern crate rand;
+
 mod trait_obj;
 
 pub trait Action {
